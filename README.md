@@ -19,3 +19,32 @@ Documentation is available on [godoc.org](http://godoc.org/github.com/AlekSi/zab
 Also, Rafael Fernandes dos Santos wrote a [great article](http://www.sourcecode.net.br/2014/02/zabbix-api-with-golang.html) about using and extending this package.
 
 License: Simplified BSD License (see LICENSE).
+
+Example
+-------
+```golang
+package main
+
+import (
+	"fmt"
+	"github.com/AlekSi/zabbix"
+)
+
+func main() {
+	api := zabbix.NewAPI("http://zabbix.tema/api_jsonrpc.php")
+	_, err := api.Login("Admin", "zabbix")
+	if err != nil {
+		panic(err)
+	}
+	defer api.Logout()
+
+	hosts, err := api.HostsGet(zabbix.Params{"output": "extend", "filter": zabbix.Params{"host": "Zabbix server"}})
+	if err != nil {
+		panic(err)
+	}
+
+	for _, host := range hosts {
+		fmt.Println(host.Host)
+	}
+}
+```
