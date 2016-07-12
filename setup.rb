@@ -14,9 +14,11 @@ def run(cmd)
   end
 end
 
-UBUNTU_RELEASE="precise"
-if ZABBIX_VERSION > 2.2
+case ZABBIX_VERSION
+when "2.4", "3.0"
     UBUNTU_RELEASE="trusty"
+else
+    UBUNTU_RELEASE="precise"
 end
 
 run('wget -qO - http://repo.zabbix.com/zabbix-official-repo.key | apt-key add -')
