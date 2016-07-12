@@ -1,5 +1,6 @@
 sudo: required
-dist: precise
+#dist: precise
+dist: trusty
 language: go
 
 go:
