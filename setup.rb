@@ -14,12 +14,12 @@ def run(cmd)
   end
 end
 
-#case ZABBIX_VERSION
-#when "2.4", "3.0"
-UBUNTU_RELEASE="trusty"
-#else
-#    UBUNTU_RELEASE="precise"
-#end
+case ZABBIX_VERSION
+when 3.0"
+    UBUNTU_RELEASE="trusty"
+else
+    UBUNTU_RELEASE="precise"
+end
 
 run('wget -qO - http://repo.zabbix.com/zabbix-official-repo.key | apt-key add -')
 run("add-apt-repository 'deb http://repo.zabbix.com/zabbix/#{ZABBIX_VERSION}/ubuntu/ #{UBUNTU_RELEASE} main non-free contrib'")
