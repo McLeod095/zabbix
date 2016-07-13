@@ -15,7 +15,7 @@ def run(cmd)
 end
 
 case ZABBIX_VERSION
-when 3.0"
+when "3.0"
     UBUNTU_RELEASE="trusty"
 else
     UBUNTU_RELEASE="precise"
